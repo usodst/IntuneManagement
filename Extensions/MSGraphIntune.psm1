@@ -29,9 +29,9 @@ function Invoke-InitializeModule
 
     if(-not $global:authentication)
     {
-        if((Get-Command Connect-MSGraph))
+        if((Get-Command Connect-MgGraph))
         {
-            $global:authentication = Connect-MSGraph -PassThru 
+            $global:authentication = Connect-MgGraph
         }
     }
 
