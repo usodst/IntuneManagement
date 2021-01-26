@@ -105,7 +105,7 @@ function Get-AutoPilots
 
 function Get-AutoPilotObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/windowsAutopilotDeploymentProfiles"
+    Get-GraphObjects -Url "beta/deviceManagement/windowsAutopilotDeploymentProfiles"
 }
 
 function Get-AutoPilotObject

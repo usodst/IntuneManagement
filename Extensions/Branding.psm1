@@ -106,7 +106,7 @@ function Get-IntuneBrandings
 
 function Get-IntuneBrandingObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/intuneBrand" -property @("displayName")
+    Get-GraphObjects -Url "beta/deviceManagement/intuneBrand" -property @("displayName")
 }
 
 function Export-AllIntuneBrandings

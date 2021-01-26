@@ -105,7 +105,7 @@ function Get-AppProtections
 
 function Get-AppProtectionObjects
 {    
-    Get-GraphObjects -Url "/deviceAppManagement/managedAppPolicies"
+    Get-GraphObjects -Url "beta/deviceAppManagement/managedAppPolicies"
 }
 
 function Get-AppProtectionObject

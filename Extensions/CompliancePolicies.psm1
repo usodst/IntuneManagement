@@ -105,7 +105,7 @@ function Get-CompliancePolicies
 
 function Get-CompliancePolicyObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/deviceCompliancePolicies"
+    Get-GraphObjects -Url "beta/deviceManagement/deviceCompliancePolicies"
 }
 
 function Get-CompliancePolicyObject

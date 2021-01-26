@@ -143,7 +143,7 @@ function Get-PowerShellScripts
 
 function Get-PowerShellScriptObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/deviceManagementScripts"
+    Get-GraphObjects -Url "beta/deviceManagement/deviceManagementScripts"
 }
 
 function Get-PowerShellScriptObject

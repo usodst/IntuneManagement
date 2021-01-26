@@ -106,7 +106,7 @@ function Get-GPOSettings
 
 function Get-GPOSettingObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/groupPolicyConfigurations"
+    Get-GraphObjects -Url "beta/deviceManagement/groupPolicyConfigurations"
 }
 
 function Get-GPOSettingObject

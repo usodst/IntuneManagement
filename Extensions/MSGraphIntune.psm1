@@ -41,14 +41,14 @@ function Invoke-InitializeModule
         return
     }
 
-    $global:Me = Invoke-GraphRequest "ME"
+    $global:Me = Invoke-GraphRequest -Uri "/beta/me"
 
     if(-not $global:Me)
     {
         [System.Windows.MessageBox]::Show("Failed to get information about current logged on Azure user!`n`nVerify connection and try again`n`nNo Intune modules will be imported!", "Error", "OK", "Error")
         return
     }
-    $global:Organization = (Invoke-GraphRequest "Organization").Value
+    $global:Organization = (Invoke-GraphRequest -Uri "beta/Organization").Value
 
     $global:graphURL = "https://graph.microsoft.com/beta"
 
@@ -468,49 +468,10 @@ $xmlStr = @"
     Set-ObjectGrid $importGrid
 }
 
-function Invoke-GraphRequest
-{
-    param (
-            [Parameter(Mandatory)]
-            $Url,
-
-            $Content,
-
-            $Headers,
-
-            [ValidateSet("GET","POST","OPTIONS","DELETE", "PATCH")]
-            $HttpMethod = "GET"
-        )
-
-    $params = @{}
-
-    if($Content) { $params.Add("Content", $Content) }
-    if($Headers) { $params.Add("Headers", $Headers) }
-
-    if(($Url -notmatch "^http://|^https://"))
-    {
-        $Url = $global:graphURL + "/" + $Url.TrimStart('/')
-    }
-
-    try
-    {
-        Invoke-MSGraphRequest -Url $Url -HttpMethod $HttpMethod.ToUpper() @params -ErrorAction SilentlyContinue
-        if($? -eq $false) 
-        {
-            throw $global:error[0]
-        }
-
-    }
-    catch
-    {
-        Write-LogError "Failed to invoke MSGraphRequest" $_.Exception
-    }
-}
-
 function Get-GraphObjects 
 {
     param(
-    [Array]
+    [string]
     $Url,
     [Array]
     $property = @('displayName', 'description', 'id'),
@@ -520,9 +481,9 @@ function Get-GraphObjects
 
     $objects = @()
 
-    $graphObjects = Invoke-GraphRequest -Url $url
+    $graphObjects = Invoke-GraphRequest -Uri $url
         
-    if(($graphObjects | GM -Name Value -MemberType NoteProperty))
+    if(($graphObjects | GM -Name Value -MemberType NoteProperty -EA SilentlyContinue))
     {
         $retObjects = $graphObjects.Value            
     }
@@ -584,7 +545,7 @@ function Get-AzureADOrganization
 {
     param([switch]$short)
 
-    $urlTemp = "/organization"
+    $urlTemp = "/beta/Organization"
 
     if($short) { $urlTemp += "`$select=displayName" }
 

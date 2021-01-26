@@ -104,7 +104,7 @@ function Get-DeviceConfigurations
 
 function Get-DeviceConfigurationObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/deviceConfigurations"#,"/deviceManagement/groupPolicyConfigurations"
+    Get-GraphObjects -Url "beta/deviceManagement/deviceConfigurations"#,"/deviceManagement/groupPolicyConfigurations"
 }
 
 function Get-DeviceConfigurationObject

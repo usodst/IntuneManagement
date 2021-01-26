@@ -105,7 +105,7 @@ function Get-TermsAndConditions
 
 function Get-TermsAndConditionObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/termsAndConditions"
+    Get-GraphObjects -Url "beta/deviceManagement/termsAndConditions"
 }
 
 function Get-TermsAndConditionObject

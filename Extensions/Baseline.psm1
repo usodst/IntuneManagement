@@ -85,7 +85,7 @@ function Get-BaselineTemplates
 
 function Get-BaselineTemplateObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/templates"
+    Get-GraphObjects -Url "beta/deviceManagement/templates"
 }
 
 function Get-BaselineProfiles
@@ -130,7 +130,7 @@ function Get-BaselineProfiles
 
 function Get-BaselineProfileObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/intents"
+    Get-GraphObjects -Url "beta/deviceManagement/intents"
 }
 
 function Get-BaselineProfileObject

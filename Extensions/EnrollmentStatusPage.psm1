@@ -105,7 +105,7 @@ function Get-ESPs
 
 function Get-ESPObjects
 {
-    Get-GraphObjects -Url "/deviceManagement/deviceEnrollmentConfigurations"
+    Get-GraphObjects -Url "beta/deviceManagement/deviceEnrollmentConfigurations"
 }
 
 function Get-ESPObject

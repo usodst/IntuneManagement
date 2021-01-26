@@ -151,7 +151,7 @@ function Get-Applications
 
 function Get-ApplicationObjects
 {
-    Get-GraphObjects -Url "/deviceAppManagement/mobileApps?`$filter=(microsoft.graph.managedApp/appAvailability%20eq%20null%20or%20microsoft.graph.managedApp/appAvailability%20eq%20%27lineOfBusiness%27%20or%20isAssigned%20eq%20true)&`$orderby=displayName"
+    Get-GraphObjects -Url "beta/deviceAppManagement/mobileApps?`$filter=(microsoft.graph.managedApp/appAvailability%20eq%20null%20or%20microsoft.graph.managedApp/appAvailability%20eq%20%27lineOfBusiness%27%20or%20isAssigned%20eq%20true)&`$orderby=displayName"
 }
 
 function Get-ApplicationObject
@@ -160,7 +160,7 @@ function Get-ApplicationObject
 
     if(-not $Object.id) { return }
 
-    Invoke-GraphRequest -Url "/deviceAppManagement/mobileApps/$($Object.id)$additional"
+    Invoke-GraphRequest -Url "/beta/deviceAppManagement/mobileApps/$($Object.id)$additional"
 }
 
 function Export-AllApplications
